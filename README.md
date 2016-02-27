@@ -3,11 +3,11 @@ Kronecker Product
 
 This plugin is made to make working with direct products very easy and efficient.
 
-'''python
+```python
 >>> unit, x, y, z = pauli_matrices()
 >>> x << unit
 sigma_{x} ⊗ 1
-'''
+```
 
 Direct product are done using the bitshift operator <<, since we are essentially 
 pushing the matrix on the right hand side of the operator into whats on the left 
@@ -15,11 +15,11 @@ hand side.
 
 The normal multiplication operator still does matrix multiplication:
 
-'''python
+```python
 >>> unit, x, y, z = pauli_matrices()
 >>> x * y
 i sigma_{z}
-'''
+```
 
 Lazy Evaluation FTW
 ===================
