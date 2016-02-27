@@ -27,3 +27,25 @@ Lazy Evaluation FTW
 No matrix multiplication is performed if you don't want it too. In fact, the 
 objects do not have to be matrices at all. This package only cares whether the 
 object have multiplication defined.
+
+More Examples
+=============
+```python
+>>> unit, x, y, z = pauli_matrices()
+>>> (x + y) << unit
+sigma_{x} + sigma{y}
+```
+
+```python
+>>> a = x << x
+>>> b = y << y
+>>> a * b
+(i sigma_z) ⊗ (i sigma_z)
+```
+
+```python
+>>> a = x << x
+>>> 1/a
+(sigma_x)^{-1} ⊗ (sigma_x{-1}
+```
+
