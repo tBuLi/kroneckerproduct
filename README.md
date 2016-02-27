@@ -1,3 +1,5 @@
+(this is a work in progress, nothing works yet)
+
 Kronecker Product
 =================
 
