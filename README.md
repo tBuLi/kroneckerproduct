@@ -55,7 +55,7 @@ Inverse
 (A << B)**-1 == A**-1 << B**-1
 1/(A << B) == 1/A << 1/B
 ```
-This last form is a slight abuse of notation, however I think it is a good one in the context of coding with matrices.
+This last form is a slight abuse of notation, however I think it is a good one in the context of coding with matrices. The division operator is out of a job anyway.
 
 Transpose and Conjugation
 -------------------------
@@ -90,6 +90,6 @@ sigma_{x} + sigma{y}
 ```python
 >>> a = x << x
 >>> 1/a
-(sigma_x)^{-1} ⊗ (sigma_x{-1}
+(sigma_x)^{-1} ⊗ (sigma_x)^{-1}
 ```
 
