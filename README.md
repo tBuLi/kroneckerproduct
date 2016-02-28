@@ -23,6 +23,15 @@ The normal multiplication operator still does matrix multiplication:
 i sigma_{z}
 ```
 
+The usecase I'm developing this for is doing matrix multiplication with block matrices build up by taking the Kronecker product of many 2 x 2 matrices. If we take the Kronecker product of k such matrices, the dimension of the final matrix will therefore be 2^k x 2^k. For large k this will become impossible very quickly. However, by our knowledge that the final matrix is in fact a kronecker product, we only have to multiply the k 2 x 2 matrices to arrive at the result.
+
+So roughly speaking,
+(2^k * 2^k) * (2^k * 2^k) -> k * (2 * 2) * (2 * 2)
+
+This is a huge decrease in computational complexity!
+
+Obviously, because of the OOP implementation the overhead will be far greater but I expect that for large k this will start to pay of. Furthermore, the k multiplications of 2 * 2 matrices could even be done in parallel.
+
 Lazy Evaluation FTW
 ===================
 
@@ -52,17 +61,18 @@ Matrix Product
 Inverse
 -------
 ```python
-(A << B)**-1 == A**-1 << B**-1
 1/(A << B) == 1/A << 1/B
 ```
-This last form is a slight abuse of notation, however I think it is a good one in the context of coding with matrices. The division operator is out of a job anyway.
+This might be a slight abuse of notation, but I think it is a good one in the context of coding with matrices. The division operator is out of a job anyway.
 
 Transpose and Conjugation
 -------------------------
 ```python
 (A << B).T == A.T << B.T
-(A << B).conj == A.conj << B.conj
+~(A << B) == ~A << ~B
 ```
+Conjugation uses the binary ``not`` operator, since we flip the imaginary 'bit'.
+
 Determinant
 -----------
 ```python
