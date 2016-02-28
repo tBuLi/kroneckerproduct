@@ -12,7 +12,7 @@ sigma_{x} ⊗ 1
 ```
 
 Direct product are done using the bitshift operator <<, since we are essentially 
-pushing the matrix on the right hand side of the operator into whats on the left 
+pushing the matrix on the right hand side of the operator into what's on the left 
 hand side.
 
 The normal multiplication operator still does matrix multiplication:
@@ -23,14 +23,15 @@ The normal multiplication operator still does matrix multiplication:
 i sigma_{z}
 ```
 
-The usecase I'm developing this for is doing matrix multiplication with block matrices build up by taking the Kronecker product of many 2 x 2 matrices. If we take the Kronecker product of k such matrices, the dimension of the final matrix will therefore be 2^k x 2^k. For large k this will become impossible very quickly. However, by our knowledge that the final matrix is in fact a kronecker product, we only have to multiply the k 2 x 2 matrices to arrive at the result.
+The usecase I'm developing this for is doing matrix multiplication with block matrices build up by taking the Kronecker product of many 2 x 2 matrices. If we take the Kronecker product of *k* such matrices, the dimension of the final matrix will therefore be *2^k x 2^k*. For large *k* this will become impossible very quickly. However, by our knowledge that the final matrix is in fact a kronecker product, we only have to multiply the *k* 2 x 2 matrices to arrive at the result.
 
 So roughly speaking,
+```
 (2^k * 2^k) * (2^k * 2^k) -> k * (2 * 2) * (2 * 2)
-
+```
 This is a huge decrease in computational complexity!
 
-Obviously, because of the OOP implementation the overhead will be far greater but I expect that for large k this will start to pay of. Furthermore, the k multiplications of 2 * 2 matrices could even be done in parallel.
+Obviously, because of the OOP implementation the overhead will be far greater but I expect that for large *k* this will start to pay of. Furthermore, the *k* multiplications of 2 * 2 matrices could even be done in parallel.
 
 Lazy Evaluation FTW
 ===================
